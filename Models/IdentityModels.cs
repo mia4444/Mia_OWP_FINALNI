@@ -20,10 +20,19 @@ namespace Mia_OWP_FINALNI.Models
 
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
+        //u ovom fajlu generalno samo dodajemo naše tabele za bazu
+        public DbSet<Customer> Customers { get; set; }
+        public DbSet<Movie> Movies { get; set; }
+
+        public DbSet<MembershipType> MembershipTypes { get; set; }
+
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+
+        //public object Customers { get; internal set; }
+        //public object Customer { get; internal set; }
 
         public static ApplicationDbContext Create()
         {

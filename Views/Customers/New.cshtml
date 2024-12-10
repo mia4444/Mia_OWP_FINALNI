@@ -1,0 +1,38 @@
+﻿@model Mia_OWP_FINALNI.ViewModels.newCustomerViewModel
+@{
+    ViewBag.Title = "New";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>New Customer</h2>
+
+@using (Html.BeginForm("Create", "Customers"))
+{
+
+    <div class="form-group">
+        <!--ovo je iz bootstrap-a-->
+        @Html.LabelFor(m => m.Customer.Name)
+        @Html.TextBoxFor(m => m.Customer.Name, new { @class = "form-control" })
+
+    </div>
+
+
+    <div class="form-group">
+        <!--ovo je iz bootstrap-a-->
+        
+        @Html.LabelFor(m => m.Customer.MembershipTypeId)
+        @Html.DropDownListFor(m => m.Customer.MembershipTypeId, new SelectList(Model.MembershipTypes, "Id", "Name"), "Select membership type:", new { @class = "form-control"})
+            
+    </div>
+
+    <div class="checkbox">
+        <!--ovo je iz bootstrap-a-->
+        <label>
+            @Html.CheckBoxFor(m => m.Customer.IsSubscribedToNewsletter) Subscribed to newsletter?
+        </label>
+    </div>
+
+
+    <button type="submit" class="btn btn-primary">Save</button>
+}
+
